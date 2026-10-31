@@ -6,7 +6,7 @@
 /*   By: jeguiber <jeguiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 01:48:16 by jeguiber          #+#    #+#             */
-/*   Updated: 2026/10/31 02:46:33 by jeguiber         ###   ########.fr       */
+/*   Updated: 2026/10/31 02:48:14 by jeguiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,15 @@ int	ft_putnbr(long n)
 	return (len);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int	main(void)
-{
-	int	a = ft_putnbr(-3456789L);
+// int	main(void)
+// {
+// 	int	a = ft_putnbr(-3456789L);
 
-	write(1, "\n", 1);
-	int	b = ft_putstr("qwertyu");
+// 	write(1, "\n", 1);
+// 	int	b = ft_putstr("qwertyu");
 
-	printf("\n\nnbr_len : %d\nstr_len : %d\n", a, b);
-	return (0);
-}
+// 	printf("\n\nnbr_len : %d\nstr_len : %d\n", a, b);
+// 	return (0);
+// }
