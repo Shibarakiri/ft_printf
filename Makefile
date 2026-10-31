@@ -1,16 +1,16 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+NAME = libftprintf.a
 SRCS = ft_printf.c ft_printf_var.c
 OBJS = $(SRCS:.c=.o)
-NAME = libftprintf.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) -o $@ $^
+	ar -rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $^ -o $@
 
 .PHONY: all clean fclean re
 
