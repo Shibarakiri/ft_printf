@@ -6,7 +6,7 @@
 /*   By: jeguiber <jeguiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 01:48:16 by jeguiber          #+#    #+#             */
-/*   Updated: 2026/10/31 02:48:14 by jeguiber         ###   ########.fr       */
+/*   Updated: 2026/10/31 03:13:24 by jeguiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,33 @@ int	ft_putnbr(long n)
 	return (len);
 }
 
+int	ft_puthexa(unsigned long nb, char c)
+{
+	int		i;
+	int		len;
+	int		tmp;
+	char	*stock;
+
+	i = 0;
+	len = 0;
+	if (c == 'x')
+		stock = "0123456789abcdef";
+	else
+		stock = "0123456789ABCDEF";
+	if (nb >= 16)
+	{
+		tmp = ft_puthexa(nb / 16, c);
+		if (tmp == -1)
+			return (-1);
+		len += tmp;
+	}
+	i = nb % 16;
+	if (write(1, &stock[i], 1) == -1)
+		return (-1);
+	len += 1;
+	return (len);
+}
+
 // #include <stdio.h>
 
 // int	main(void)
@@ -76,6 +103,9 @@ int	ft_putnbr(long n)
 // 	write(1, "\n", 1);
 // 	int	b = ft_putstr("qwertyu");
 
-// 	printf("\n\nnbr_len : %d\nstr_len : %d\n", a, b);
+// 	write(1, "\n", 1);
+// 	int	c = ft_puthexa(23456789U, 'X');
+
+// 	printf("\n\nnbr_len : %d\nstr_len : %d\nhexa_len : %d\n", a, b, c);
 // 	return (0);
 // }
