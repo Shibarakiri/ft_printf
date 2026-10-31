@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeguiber <jeguiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/31 01:48:16 by jeguiber          #+#    #+#             */
-/*   Updated: 2026/10/31 03:13:24 by jeguiber         ###   ########.fr       */
+/*   Created: 2026/10/31 00:48:16 by jeguiber          #+#    #+#             */
+/*   Updated: 2026/10/31 04:09:23 by jeguiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_putstr(char *str)
 {
 	int	i;
 
-	if (!*str)
+	if (!str)
 	{
 		if (write(1, "(null)", 6) == -1)
 			return (-1);
@@ -94,18 +94,46 @@ int	ft_puthexa(unsigned long nb, char c)
 	return (len);
 }
 
+int	ft_putptr(void *ptr)
+{
+	int	len;
+	int	tmp;
+
+	len = 0;
+	tmp = 0;
+	if (ft_putstr("0x") == -1)
+		return (-1);
+	len += 2;
+	tmp = ft_puthexa((unsigned long) ptr, 'x');
+	if (tmp == -1)
+		return (-1);
+	len += tmp;
+	return (len);
+}
+
 // #include <stdio.h>
 
 // int	main(void)
 // {
-// 	int	a = ft_putnbr(-3456789L);
+// 	int	c = ft_putchar('\t');
 
-// 	write(1, "\n", 1);
-// 	int	b = ft_putstr("qwertyu");
+// 	printf("\n");
+// 	int	di = ft_putnbr(-3456789L);
 
-// 	write(1, "\n", 1);
-// 	int	c = ft_puthexa(23456789U, 'X');
+// 	printf("\n");
+// 	int	s = ft_putstr("qwertyu");
 
-// 	printf("\n\nnbr_len : %d\nstr_len : %d\nhexa_len : %d\n", a, b, c);
+// 	printf("\n");
+// 	int	h = ft_puthexa(23456789U, 'X');
+
+// 	printf("\n");
+// 	int	p = ft_putptr("Test");
+
+// 	printf("\n\nchr_len : %d - $c", c);
+// 	printf("\nnbr_len : %d - $d", di);
+// 	printf("\nstr_len : %d - $s", s);
+// 	printf("\nhex_len : %d - $h", h);
+// 	printf("\nptr_len : %d - $p", p);
+// 	printf("\n");
 // 	return (0);
 // }
