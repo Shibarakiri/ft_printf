@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jeguiber <jeguiber@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/31 01:46:30 by jeguiber          #+#    #+#             */
-/*   Updated: 2026/10/31 04:24:06 by jeguiber         ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   ft_printf.c                                       :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: jeguiber <jeguiber@student.42.fr>         #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/10/31 01:46:30 by jeguiber         #+#    #+#              */
+/*   Updated: 2026/11/02 04:46:17 by jeguiber        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,20 @@ int	ft_printf(const char *str, ...)
 	int		len;
 	int		tmp;
 
+	if (!str)
+		return (-1);
 	len = 0;
+	tmp = 0;
 	va_start(args, str);
 	while (*str)
 	{
 		if (*str == '%')
-		{
 			tmp = ft_checkif(args, *(++str));
-			if (tmp == -1)
-				return (-1);
-			len += tmp;
-		}
 		else
-		{
-			if (write(1, str, 1) == -1)
-				return (-1);
-			len++;
-		}
+			tmp = ft_putchar(*(str));
+		if (tmp == -1)
+			return (va_end(args), -1);
+		len += tmp;
 		str++;
 	}
 	va_end(args);

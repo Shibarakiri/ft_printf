@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf_var.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jeguiber <jeguiber@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/31 00:48:16 by jeguiber          #+#    #+#             */
-/*   Updated: 2026/10/31 04:13:04 by jeguiber         ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   ft_printf_var.c                                   :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: jeguiber <jeguiber@student.42.fr>         #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/10/31 00:48:16 by jeguiber         #+#    #+#              */
+/*   Updated: 2026/11/02 04:43:07 by jeguiber        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
 
 int	ft_putstr(char *str)
@@ -101,6 +100,8 @@ int	ft_putptr(void *ptr)
 
 	len = 0;
 	tmp = 0;
+	if (!ptr)
+		return (write(1, "(nil)", 5));
 	if (ft_putstr("0x") == -1)
 		return (-1);
 	len += 2;
